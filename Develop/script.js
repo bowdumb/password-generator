@@ -27,16 +27,17 @@ function generatePassword() {
 
 
 
-  return "Generated password will go here!";
+
 
   }
 
 
 // Write password to the #password input
 function writePassword() {
+  popUp();
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  
   passwordText.value = password;
 
 }
@@ -44,7 +45,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
+popUp(); //Added popUp prompt function to run when the "Generate Password" button is clicked.
 function generatePassword() {
 
 }
@@ -52,7 +53,7 @@ function generatePassword() {
 //Added first line of if/else code to popUP variable.
 function popUp() {
   length = prompt("How many characters would you like your password to contain? You may select 8-128 characters");
-
+  passArray = [];
 if (length < 8 || length > 128) {
   alert("Invalid entry. Please enter a character count between 8-128");
   console.log("Invalid character amount. Please enter a character between 8-128");
@@ -69,9 +70,10 @@ if (confirm("Would you like your password to include uppercase letters?")) {
   console.log("You would like your password to include uppercase letters!");
 }
 //Added IF statement to create confirm() popup box for numbers.
-if (confirm("Would you like your password to contain numbers?"))
+if (confirm("Would you like your password to contain numbers?")) {
   passArray = passArray.concat(numbers);
   console.log("You would like your password to contain numbers!");
+}
 //Added IF statement to create confirm() popup box for special characters.
 if (confirm("Would you like your password to contain special characters?")) {
   passArray = passArray.concat(special);
