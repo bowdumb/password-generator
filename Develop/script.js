@@ -2,11 +2,11 @@
 var generateBtn = document.querySelector("#generate");
 
 
-var number = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l","m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "", "", "", "", "",] 
 var special = ["!", "@", "#", "$", "%", "^", "*", "&", "(", ")", ",", ".", "/", "<", ">",];
-var length = x;
+var length = 8;
 
 
 
@@ -45,7 +45,14 @@ function generatePassword() {
 
 }
 
-function alert() {
+function popUp() {
   length = prompt("How many characters would you like your password to contain? You may select 8-128 characters");
+//Added first like of if/else code to popUP variable.
+if (length < 8 || length > 128) {
+  console.log("Invalid character amount. Please enter a character between 8-128");
+} else {
+
 }
-// alert();
+
+}
+popUp();
