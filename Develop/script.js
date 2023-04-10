@@ -15,7 +15,7 @@ var passArray = [];
 // Write password to the #password input
 function writePassword() {
     
-    var truePop = popUp(); //Assigns the value of truePop to the boolean value of popUp();
+    var truePop = popUp(); //By Assigning the value of truePop to popUp() we call the function below on line 47.
     var passwordText = document.querySelector("#password");
 
     if (truePop) {    //If value of popUP() is true, code block below will execute.
@@ -31,14 +31,14 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// popUp(); //Added popUp prompt function to run when the "Generate Password" button is clicked.
+
 
 //Created for loop below that 
 function generatePassword() {
   var password = "";
     for(var i = 0; i < lengthArray; i++) {
-      var randomIndex = Math.floor(Math.random() * passArray.length); //Math.random() generates random integer between 0-.9. Math.floor will round down if a decimal is returned.
-      password = password + passArray[randomIndex];
+      var character = Math.floor(Math.random() * passArray.length); //Math.random() generates random integer between 0-.9. Math.floor will round down if a decimal is returned. A randomly selected character will be assigned to the character variable.
+      password = password + passArray[character]; //Takes the current passArray array and inputs the random number determined above to select a character from the passArray array. This is repeated until the terminating condition in our for loop is met.
     }
     return password;
 }
