@@ -12,10 +12,12 @@ var passArray = [];
 
 
 
+
 // Write password to the #password input
 function writePassword() {
     
-    var truePop = popUp(); //By Assigning the value of truePop to popUp() we call the function below on line 47.
+    passArray = []; //Clears the contents of PassArray in order to ensure that character types are selected when running the password generator a second time following a valid generation.
+    var truePop = popUp(); //By Assigning the value of truePop to popUp() we call the function below.
     var passwordText = document.querySelector("#password");
 
     if (truePop) {    //If value of popUP() is true, code block below will execute.
@@ -33,7 +35,6 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-//Created for loop below that 
 function generatePassword() {
   var password = "";
     for(var i = 0; i < lengthArray; i++) {
@@ -47,6 +48,7 @@ function generatePassword() {
 function popUp() {
   
   lengthArray = prompt("How many characters would you like your password to contain? You may select 8-128 characters");
+
 
   if (lengthArray < 8 || lengthArray > 128) {
   alert("Invalid entry. Please enter a character count between 8-128");
