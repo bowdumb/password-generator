@@ -5,16 +5,10 @@ var generateBtn = document.querySelector("#generate");
 var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l","m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "", "", "", "", "",] 
-var special = ["!", "@", "#", "$", "%", "^", "*", "&", "(", ")", ",", ".", "/", "<", ">",];
-var length = 8;
+var special = ["!", "@", "#", "$", "%", "^", "*", "&", "(", ")", ",", ".", "/", "<", ">", "-", "+", "-", "`", "~", "|"];
+var lengthArray = 8;
 var passArray = [];
 
-//1. Prompt the user for the password criteria.
-//  a. Passworth length 8 < 128 characters.
-//  b. Lowercase, uppercase, numbers, special characters.
-//2. Validate the input. (ensure that A and B are met, and at least one character type is being selected)
-//3.Display generated password based on criteria.
-//
 
 
 
@@ -30,9 +24,7 @@ function writePassword() {
     var passwordText = document.querySelector("#password");
   
     passwordText.value = password;
-
-    } else{
-      passwordText.value = "Please select a valid input";
+    
     }
 }
 
@@ -41,12 +33,12 @@ generateBtn.addEventListener("click", writePassword);
 
 // popUp(); //Added popUp prompt function to run when the "Generate Password" button is clicked.
 
-
+//Created for loop below that 
 function generatePassword() {
   var password = "";
-    for(var i = 0; i < length; i++) {
-      var randomValue = Math.floor(Math.random() * passArray.length);
-      password = password + passArray[randomValue];
+    for(var i = 0; i < lengthArray; i++) {
+      var randomIndex = Math.floor(Math.random() * passArray.length); //Math.random() generates random integer between 0-.9. Math.floor will round down if a decimal is returned.
+      password = password + passArray[randomIndex];
     }
     return password;
 }
@@ -54,11 +46,9 @@ function generatePassword() {
 //Added first line of if/else code to popUP variable.
 function popUp() {
   
-  length = prompt("How many characters would you like your password to contain? You may select 8-128 characters");
-  // passArray = [];
+  lengthArray = prompt("How many characters would you like your password to contain? You may select 8-128 characters");
 
-
-  if (length < 8 || length > 128) {
+  if (lengthArray < 8 || lengthArray > 128) {
   alert("Invalid entry. Please enter a character count between 8-128");
   console.log("Invalid character amount. Please enter a character between 8-128");
   return false; //Returns a value of FALSE, and stops executing code below.
@@ -84,8 +74,12 @@ if (confirm("Would you like your password to contain special characters?")) {
   console.log("You would like your password to contain special characters!");
 }
 
-else (confirm("You must select at least one character type! Please retry.")); //Requires the selection of at least one character type in order for the value of TRUE to be returned.
+//If no character types are selected the user will be informed that a selection is required and a value of FALSE will be returned, prohibiting the execution of the writePassword function. 
+if (passArray.length === 0) {
+  alert("You must select at least one character type! Please retry."); 
+  return false; //Requires the selection of at least one character type in order for the value of TRUE to be returned.
+}
 
-return true; //Ends function and returns specified value to the function caller.
+return true; //Ends function and returns specified value to the writePassword function.
 
 }
