@@ -35,6 +35,7 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
+
 function generatePassword() {
   var password = "";
     for(var i = 0; i < lengthArray; i++) {
